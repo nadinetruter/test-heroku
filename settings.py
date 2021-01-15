@@ -8,6 +8,7 @@ load_dotenv(dotenv_path)
 
 SECRET_KEY = os.environ.get("JWT_SECRET_KEY")
 MAIL_SERVER = os.environ.get("MAIL_SERVER")
+DEBUG= os.environ.get("DEBUG")
 MAIL_PORT = os.environ.get("MAIL_PORT")
 MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
 MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
