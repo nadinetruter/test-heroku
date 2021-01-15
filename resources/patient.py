@@ -9,6 +9,7 @@ from resources.errors import SchemaValidationError, ItemAlreadyExistsError, \
 InternalServerError, UpdatingItemError, DeletingItemError, ItemNotExistsError
 
 class PatientsApi(Resource):
+    @jwt_required
     def get(self):
         patient = Patient.objects().to_json()
         return Response(patient, mimetype="application/json", status=200)
@@ -60,7 +61,8 @@ class PatientApi(Resource):
             raise DeletingItemError
         except Exception:
             raise InternalServerError
-
+            
+    @jwt_required
     def get(self, id):
         try:
             patients = Patient.objects.get(id=id).to_json()

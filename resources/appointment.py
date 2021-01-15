@@ -9,6 +9,7 @@ from resources.errors import SchemaValidationError, ItemAlreadyExistsError, \
 InternalServerError, UpdatingItemError, DeletingItemError, ItemNotExistsError
 
 class AppointmentsApi(Resource):
+    @jwt_required
     def get(self):
         appointment = Appointment.objects().to_json()
         return Response(appointment, mimetype="application/json", status=200)
