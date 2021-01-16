@@ -45,7 +45,6 @@ class LoginAdminApi(Resource):
             raise InternalServerError
 
 class LogoutApiAdmin(Resource):
-    def logout(self):
+    def logout():
         session.clear()
         return redirect("/api/auth/admin/login")
-        return "code was success"

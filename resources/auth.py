@@ -42,7 +42,6 @@ class LoginApi(Resource):
             raise InternalServerError
 
 class LogoutUserApi(Resource):
-    def logout(self):
+    def logout():
         session.clear()
         return redirect("/api/auth/login")
-        
