@@ -1,5 +1,5 @@
 from flask import Response, request
-from database.models import AdminSignUp, Admin, Appointment
+from database.models import AdminSignUp, Admin
 from flask_restful import Resource
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from mongoengine.errors import FieldDoesNotExist, NotUniqueError, DoesNotExist, ValidationError, InvalidQueryError
@@ -17,7 +17,6 @@ class AdminApi(Resource):
   def get(self):
     sign = Admin.objects().to_json()
     return Response(sign, mimetype="application/json", status=200)
-
 
 
   # ** is the spread operator
@@ -87,22 +86,3 @@ class AdminsApi(Resource):
           raise ItemNotExistsError
       except Exception:
           raise InternalServerError
-
-class AdminAppointmentsApi(Resource):
-    def get(self):
-        appointment = Appointment.objects().to_json()
-        return Response(appointment, mimetype="application/json", status=200)
-
-class AdminAppointmentApi(Resource):
-
-    @jwt_required
-    def delete(self, id):
-        try:
-            user_id = get_jwt_identity()
-            appointment = Appointment.objects.get(id=id, added_by=user_id)
-            appointment.delete()
-            return '', 200
-        except DoesNotExist:
-            raise DeletingItemError
-        except Exception:
-            raise InternalServerError
