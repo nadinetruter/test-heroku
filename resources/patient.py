@@ -1,4 +1,4 @@
-from flask import Response, request
+from flask import Response, request, jsonify
 from database.models import Patient, User
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask_restful import Resource
@@ -9,9 +9,15 @@ from resources.errors import SchemaValidationError, ItemAlreadyExistsError, \
 InternalServerError, UpdatingItemError, DeletingItemError, ItemNotExistsError
 
 class PatientsApi(Resource):
+    @jwt_required
     def get(self):
-        patient = Patient.objects().to_json()
-        return Response(patient, mimetype="application/json", status=200)
+        user_id = get_jwt_identity()
+
+        patients = User.objects.get(id=user_id).patients
+
+        return jsonify(patients)
+
+        return Response(patients, mimetype="application/json", status=200)
 
     @jwt_required
     def post(self):

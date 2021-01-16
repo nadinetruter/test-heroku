@@ -25,8 +25,8 @@ class ForgotPassword(Resource):
             expires = datetime.timedelta(hours=24)
             reset_token = create_access_token(str(user.id), expires_delta=expires)
 
-            return send_email('[Movie-bag] Reset Your Password',
-                              sender='support@movie-bag.com',
+            return send_email('Reset Your Password',
+                              sender='bytecare0@gmail.com',
                               recipients=[user.email],
                               text_body=render_template('email/reset_password.txt',
                                                         url=url + reset_token),
@@ -59,8 +59,8 @@ class ResetPassword(Resource):
             user.hash_password()
             user.save()
 
-            return send_email('[Movie-bag] Password reset successful',
-                              sender='support@movie-bag.com',
+            return send_email(' Password reset successful',
+                              sender='bytecare0@gmail.com',
                               recipients=[user.email],
                               text_body='Password reset was successful',
                               html_body='<p>Password reset was successful</p>')
@@ -90,8 +90,8 @@ class ForgotAdminPassword(Resource):
             expires = datetime.timedelta(hours=24)
             reset_token = create_access_token(str(user.id), expires_delta=expires)
 
-            return send_email('[Movie-bag] Reset Your Password',
-                              sender='support@movie-bag.com',
+            return send_email('Reset Your Password',
+                              sender='bytecare0@gmail.com',
                               recipients=[user.email],
                               text_body=render_template('email/reset_password.txt',
                                                         url=url + reset_token),
@@ -124,8 +124,8 @@ class ResetAdminPassword(Resource):
             user.hash_password()
             user.save()
 
-            return send_email('[Movie-bag] Password reset successful',
-                              sender='support@movie-bag.com',
+            return send_email('Password reset successful',
+                              sender='bytecare0@gmail.com',
                               recipients=[user.email],
                               text_body='Password reset was successful',
                               html_body='<p>Password reset was successful</p>')

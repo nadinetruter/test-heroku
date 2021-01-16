@@ -19,6 +19,7 @@ class AdminApi(Resource):
     return Response(sign, mimetype="application/json", status=200)
 
 
+
   # ** is the spread operator
   # it spreads the dict object out, neat viewing format
   # save object and return it as an id in Response

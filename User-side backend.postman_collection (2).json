@@ -1,0 +1,944 @@
+{
+	"info": {
+		"_postman_id": "2ce991a1-bee0-464b-8983-c14b6fc6b3c0",
+		"name": "User-side backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Patients api",
+			"item": [
+				{
+					"name": "/patients",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/patients",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"patients"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				},
+				{
+					"name": "/patients/<index>",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/patient/5fe11c4800aa46325b5d512d",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"patient",
+								"5fe11c4800aa46325b5d512d"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				},
+				{
+					"name": "/patients",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Nadine\",\r\n    \"surname\":\"Truter\",\r\n    \"gender\":\"Female\",\r\n    \"id_number\":\"9608065238080\",\r\n    \"address\": {\r\n        \"street_name\":\"Middel Road\",\r\n        \"house_number\":3,\r\n        \"city\":\"Cape town\",\r\n        \"country\":\"South africa\",\r\n        \"postal_code\": \"7764\"\r\n    },\r\n    \"phone\": \"067-088-1382\",\r\n    \"primary\": \"True\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/patients",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"patients"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				},
+				{
+					"name": "/patients/<index>",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Adam\",\r\n    \"surname\":\"Banderker\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/patient/5fe11c4800aa46325b5d512d",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"patient",
+								"5fe11c4800aa46325b5d512d"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				},
+				{
+					"name": "/patients/<index>",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/patient/5ffd8cb63b7f4327c858c215",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"patient",
+								"5ffd8cb63b7f4327c858c215"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appointment",
+			"item": [
+				{
+					"name": "/appointments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/appointments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				},
+				{
+					"name": "/appointment/<id>",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/appointment/60000ae65468b481d0e7ad22",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								"60000ae65468b481d0e7ad22"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				},
+				{
+					"name": "/appointment/<id>",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/appointment/60000ae65468b481d0e7ad22",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								"60000ae65468b481d0e7ad22"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				},
+				{
+					"name": "/appointments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"patient_selected\":\"9608065238080\",\r\n    \"hospital_selected\":\"600070c6c3c4f3d5a33c8cc1\",\r\n    \"appointment_date\": \"2021-08-07 16:30\",\r\n    \"ward_type\": \"General\",\r\n    \"reason_for_visit\":\"Stomach bug\"\r\n}    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/appointments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hospital information",
+			"item": [
+				{
+					"name": "/api/hospitalsinfo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/hospitalsinfo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"hospitalsinfo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Auth",
+			"item": [
+				{
+					"name": "/api/auth/signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"adambanderker50@gmail.com\",\r\n    \"password\":\"asdfg123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"tests[\"Access token was not empty\"] = jsonData.token !== undefined;\r",
+									"\r",
+									"postman.setEnvironmentVariable(\"jwt_token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"adambanderker50@gmail.com\",\r\n    \"password\":\"asdfg123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/forgot",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"bashier.banderker@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/forgot",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"forgot"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/reset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"asdfg1234\",\r\n    \"reset_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MTA1NDYzODksIm5iZiI6MTYxMDU0NjM4OSwianRpIjoiYjY4NzMwZDQtYzhlYy00M2ExLTlmMTQtY2ExMmI5OWRlZTJiIiwiZXhwIjoxNjEwNjMyNzg5LCJpZGVudGl0eSI6IjVmZmVmY2NhZGYyZWFiM2NlMWQ2YWJlZiIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9._8tW5VJeupgRqHTJHWb1hbI2PxufKibkSBP2j1jXxLs\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/reset",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"reset"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin Auth",
+			"item": [
+				{
+					"name": "/api/auth/admin/reset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"asdfg1234\",\r\n    \"reset_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MTAzNTg4MTYsIm5iZiI6MTYxMDM1ODgxNiwianRpIjoiZjdkODBjODQtNjBiYS00YjVmLWIyMmQtMjdhOTYwNTVkYzc3IiwiZXhwIjoxNjEwNDQ1MjE2LCJpZGVudGl0eSI6IjVmZmMyMDA2OWRkYTFjZTY2NzNjNjA3MyIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.YIKFpYGucjx_0FA1KBtThAldO7sYWntSH3Ja8sxD_mg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/admin/reset",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"admin",
+								"reset"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/admin/signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Bash Baderker\",\r\n    \"email\":\"Bashbanderker50@gmail.com\",\r\n    \"password\":\"asdfg123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/admin/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"admin",
+								"signup"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/admin/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"tests[\"Access token was not empty\"] = jsonData.token !== undefined;\r",
+									"\r",
+									"postman.setEnvironmentVariable(\"jwt_token1\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"Bashbanderker50@gmail.com\",\r\n    \"password\":\"asdfg123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/auth/admin/login",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"auth",
+								"admin",
+								"login"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/admin/forgot",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"Bashbanderker50@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/admin/forgot",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"admin",
+								"forgot"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin information",
+			"item": [
+				{
+					"name": "/api/admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/admins",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Adam\",\r\n    \"surname\":\"Banderker\",\r\n    \"gender\":\"Male\",\r\n    \"id_number\":\"9608065238080\",\r\n    \"address\": {\r\n        \"street_name\":\"Middel Road\",\r\n        \"house_number\":3,\r\n        \"city\":\"Cape town\",\r\n        \"country\":\"South africa\",\r\n        \"postal_code\": \"7764\"\r\n    },\r\n    \"phone\": \"067-088-1382\",\r\n    \"primary\": \"True\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/admins",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admins"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin Appointments",
+			"item": [
+				{
+					"name": "/admin/appointments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/adminappointments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"adminappointments"
+							]
+						},
+						"description": "get all patients "
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin Hospital",
+			"item": [
+				{
+					"name": "/api/hospitals",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hospital_name\":\"Groote Schuur\",\r\n    \"hospital_address\": \"53 Middel Weg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/hospitals",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"hospitals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/hospitals",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/hospitals",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"hospitals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/hospital/<id>",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hospital_name\":\"Groote Schuur1\",\r\n    \"hospital_address\": \"53 Middel Weg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/hospital/600070c6c3c4f3d5a33c8cc1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"hospital",
+								"600070c6c3c4f3d5a33c8cc1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/hospital/<id>",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/hospital/60007100be6a8af77e500e74",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"hospital",
+								"60007100be6a8af77e500e74"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/hospital/<id>",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/hospital/600070c6c3c4f3d5a33c8cc1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"hospital",
+								"600070c6c3c4f3d5a33c8cc1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

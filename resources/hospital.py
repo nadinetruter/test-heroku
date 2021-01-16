@@ -1,5 +1,5 @@
 from flask import Response, request
-from database.models import Hospital, User
+from database.models import Hospital, AdminSignUp
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask_restful import Resource
 
@@ -18,10 +18,10 @@ class HospitalsApi(Resource):
         try:
             user_id = get_jwt_identity()
             body = request.get_json()
-            user = User.objects.get(id=user_id)
+            user = AdminSignUp.objects.get(id=user_id)
             hospital = Hospital(**body, added_by=user)
             hospital.save()
-            user.update(push__hospitals=hospital)
+            user.update(push__hospital=hospital)
             user.save()
             id = hospital.id
             return {'id': str(id)}, 200

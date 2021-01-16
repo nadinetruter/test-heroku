@@ -1,75 +1,52 @@
-# Userbase-backend
+# ByteMe-backend
 
-# STILL CURRENTLY IN DEVELOPMENT
+Under construction
 
-Backend Restful api for the user - side interface.
+# Backend Flask-Restful Api Setup and Details
 
-FRAMEWORK:
-- FLASK
+FRAMEWORK: Python Flask framework
 
-LANGUAGE:
--Python
+LANGUAGE: Python
 
-ENV:
-- export ENV_FILE_LOCATION=./.env
+ENV: export ENV_FILE_LOCATION=./.env
 
+#CRUD = CREATE,READ,UPDATE,DELETE
 
-Api include:
-- Patient personal information CRUD
-  -Functions:
-    GET,UPDATE, DELETE, PUT
-- Contact information CRUD
-  -Functions:
-      GET,UPDATE, DELETE, PUT
-- Address information CRUD
-  -Functions:
-    GET,UPDATE, DELETE, PUT
-- Authorization and Authentication POST
-- Password Reset POST
+Api-Admin includes:
+1. Admin personal information [CRUD]
+2. Signup and Login Api [POST]
+3. Authorization and Authentication [POST]
+4. Password Reset [POST]
+5. Admin read and delete User appointment [GET,DELETE] 
 
-# CRUD = CREATE,RETRIEVE,UPDATE,DELETE
-
-API TESTING DONE on POSTMAN:
-SETUP POSTMAN
-- sign in
-- import json file located in POSTMAN TESTING folder
-- PS in order to test api on postman, first run run.py to start local server
-
-TESTING OUT PASSWORD RESET:
-- open cmd or git 
-- insert : python -m smtpd -n -c DebuggingServer localhost:1025
+Api-User includes:
+1. Patient personal information [CRUD] 
+3. Appointment information [CRUD]
+4. Authorization and Authentication [POST]
+5. Password Reset [POST]
 
 IN ORDER TO RUN ON LOCAL SERVER:
-- open git or cmd
-- activate viual env
-- vitual env name == env
-- export ENV_FILE_LOCATION=./.env
-- python run.py
+1. open git or cmd
+2. activate virtual env
+3. run export ENV_FILE_LOCATIONN=./.env
+4. run python run.py
+
+
+API TESTING DONE on POSTMAN:
+1. download postman
+2. run app
+3. start testing using localhost
 
 LOCALHOST: 127.0.0.1:5000
 
 TESTING OUT PASSWORD RESET:
-- open cmd or git 
-- insert : python -m smtpd -n -c DebuggingServer localhost:1025
+1. open cmd or git
+2. run python -m smtpd -n -c DebuggingServer localhost:1025
+3. open app cmd/git command line
+4. run app.py
+5. run password reset test on postman
+
+DATABASE: MONGODB, Mongo compass
 
 
-ROUTEs:
-- GET,POST PatientsApi, '/api/patients'
-- GET,UPDATE,DELETE PatientApi, '/api/patient/<id>'
-- GET,POST AddressesApi, '/api/addresses'
-- GET,UPDATE,DELETE AddressApi, '/api/addresses/<id>'
-- GET,POST ContactsApi, '/api/contacts'
-- GET,UPDATE,DELETE ContactApi, '/api/contacts/<id>'
-
-- POST SignupApi, '/api/auth/signup'
-- POST LoginApi, '/api/auth/login'
-
-- POST ForgotPassword, '/api/auth/forgot'
-- POST ResetPassword, '/api/auth/reset'
-
-DATABASE:
--MONGODB
-- Mongo compass
-
-Mongodb user.PNG in folder
 

@@ -1,7 +1,9 @@
 from .patient import PatientsApi, PatientApi
-from .hospital import HospitalsApi, HospitalApi
 from .admin import AdminApi, AdminsApi
-from .appointment import AppointmentsApi
+from .admin_appointments import AdminAppointmentsApi
+from .hospital import HospitalsApi, HospitalApi
+from .hospital_information import HospitalsInfoApi
+from .appointment import AppointmentsApi, AppointmentApi
 
 from .auth import SignupApi, LoginApi
 from .admin_auth import SignupAdminApi,LoginAdminApi
@@ -11,26 +13,32 @@ from .reset_password import ForgotPassword, ResetPassword, ForgotAdminPassword,R
 
 
 def initialize_routes(api):
-
-    api.add_resource(PatientsApi, '/api/patients')
-    api.add_resource(PatientApi, '/api/patient/<id>')
-
-    api.add_resource(HospitalsApi, '/api/hospitals')
-    api.add_resource(HospitalApi, '/api/hospital/<id>')
-
-    api.add_resource(AdminApi, '/api/admin')
-    api.add_resource(AdminsApi, '/api/admin/<id>')
-
-    api.add_resource(AppointmentsApi, '/api/appointments')
-
+    """Mobile application endpoints"""
     api.add_resource(SignupApi, '/api/auth/signup')
     api.add_resource(LoginApi, '/api/auth/login')
-
-    api.add_resource(SignupAdminApi, '/api/auth/admin/signup')
-    api.add_resource(LoginAdminApi, '/api/auth/admin/login')
 
     api.add_resource(ForgotPassword, '/api/auth/forgot')
     api.add_resource(ResetPassword, '/api/auth/reset')
 
+    api.add_resource(HospitalsInfoApi, '/api/hospitalsinfo')
+
+    api.add_resource(PatientsApi, '/api/patients')
+    api.add_resource(PatientApi, '/api/patient/<id>')
+
+    api.add_resource(AppointmentsApi, '/api/appointments')
+    api.add_resource(AppointmentApi, '/api/appointment/<id>')
+
+    """Admin side endpoints"""
+    api.add_resource(SignupAdminApi, '/api/auth/admin/signup')
+    api.add_resource(LoginAdminApi, '/api/auth/admin/login')
+
+    api.add_resource(HospitalsApi, '/api/hospitals')
+    api.add_resource(HospitalApi, '/api/hospital/<id>')
+
     api.add_resource(ForgotAdminPassword, '/api/auth/admin/forgot')
     api.add_resource(ResetAdminPassword, '/api/auth/admin/reset')
+
+    api.add_resource(AdminApi, '/api/admins')
+    api.add_resource(AdminsApi, '/api/admin/<id>')
+
+    api.add_resource(AdminAppointmentsApi, '/api/adminappointments/')
