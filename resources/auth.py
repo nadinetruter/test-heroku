@@ -40,3 +40,9 @@ class LoginApi(Resource):
             raise UnauthorizedError
         except Exception as e:
             raise InternalServerError
+
+class LogoutUserApi(Resource):
+    def logout(self):
+        session.clear()
+        return redirect("/api/auth/login")
+        return "code was success"
