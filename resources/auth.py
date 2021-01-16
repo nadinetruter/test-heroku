@@ -45,4 +45,4 @@ class LogoutUserApi(Resource):
     def logout(self):
         session.clear()
         return redirect("/api/auth/login")
-        return "code was success"
+        
