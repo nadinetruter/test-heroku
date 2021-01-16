@@ -28,7 +28,6 @@ def initialize_routes(api):
     api.add_resource(AppointmentsApi, '/api/appointments')
     api.add_resource(AppointmentApi, '/api/appointment/<id>')
 
-    api.add_resource(LoginUserApi,'/api/userlogout')
 
     """Admin side endpoints"""
     api.add_resource(SignupAdminApi, '/api/auth/admin/signup')
@@ -45,4 +44,4 @@ def initialize_routes(api):
 
     api.add_resource(AdminAppointmentsApi, '/api/adminappointments')
 
-    api.add_resource(LoginAdminApi,'/api/adminlogout')
+    

@@ -43,8 +43,3 @@ class LoginAdminApi(Resource):
             raise UnauthorizedError
         except Exception as e:
             raise InternalServerError
-
-class LogoutApiAdmin(Resource):
-    def logout():
-        session.clear()
-        return redirect("/api/auth/admin/login")
