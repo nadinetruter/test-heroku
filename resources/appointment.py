@@ -21,7 +21,7 @@ class AppointmentsApi(Resource):
         for p in patients:
             ap = Appointment.objects.get(patient_selected = p.id)
             if ap:
-                data.append(ap.to_json())
+                data.append(ap)
 
 
         return jsonify(data)
