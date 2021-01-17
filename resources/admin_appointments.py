@@ -11,7 +11,7 @@ class AdminAppointmentsApi(Resource):
         appointment = Appointment.objects().to_json()
         return Response(appointment, mimetype="application/json", status=200)
 
-class AdminAppointmentApi(Resource):
+class AdminAppointmentsApi(Resource):
     @jwt_required
     def put(self, id):
         try:
