@@ -1,6 +1,6 @@
 from database.models import AdminSignUp
 from flask_restful import Resource
-from flask import Response, request
+from flask import Response, request,session
 from flask_jwt_extended import create_access_token
 import datetime
 from mongoengine.errors import FieldDoesNotExist, NotUniqueError, DoesNotExist
@@ -43,3 +43,8 @@ class LoginAdminApi(Resource):
             raise UnauthorizedError
         except Exception as e:
             raise InternalServerError
+
+class LogoutAdminApi(Resource):
+    def logout():
+        session.clear()
+        return redirect("/api/auth/admin/login")
