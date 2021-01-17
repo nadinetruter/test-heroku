@@ -1,4 +1,4 @@
-from flask import Response, request
+from flask import Response, request,session
 from flask_jwt_extended import create_access_token
 from database.models import User
 from flask_restful import Resource
@@ -40,3 +40,9 @@ class LoginApi(Resource):
             raise UnauthorizedError
         except Exception as e:
             raise InternalServerError
+
+class LogoutApiUser(Resource):
+    def logout(self):
+        session.clear()
+        return redirect("/api/auth/login")
+        return "code was success"
