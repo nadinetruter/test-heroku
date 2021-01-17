@@ -2,6 +2,8 @@ from .db import db
 from flask_bcrypt import generate_password_hash, check_password_hash
 import re
 
+
+
 class Address(db.EmbeddedDocument):
     street_name = db.StringField(required = True)
     house_number = db.IntField(required = True)
