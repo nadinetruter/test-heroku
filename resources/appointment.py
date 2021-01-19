@@ -19,7 +19,7 @@ class AppointmentsApi(Resource):
         data = []
 
         for p in patients:
-            ap = Appointment.objects.get(patient_selected = p.id)
+            ap = Appointment.objects.get(**{ "patient_selected" : p["id_number"] })
             if ap:
                 data.append(ap)
 

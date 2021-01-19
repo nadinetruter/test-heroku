@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\Adam Banderker\Downloads\Clinic user api\Clinic user api\env"
+VIRTUAL_ENV="C:\Users\Adam Banderker\Desktop\userbase-backend\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

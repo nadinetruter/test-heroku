@@ -31,7 +31,7 @@ class Patient(db.Document):
     id_number = db.StringField(required = True,min_length=13, primary_key=True)
     address = db.EmbeddedDocumentField(Address)
     phone = PhoneField()
-    primary = db.BooleanField(required = False)
+    #primary = db.BooleanField(required = False)
     added_by = db.ReferenceField('User')
 
 
@@ -51,7 +51,7 @@ class Appointment(db.Document):
     #appointment_time = db.DateTimeField(format="%H:%M", required = True, unique = True)
     ward_type = db.StringField(required = True)
     reason_for_visit = db.StringField(required = True)
-    completed = db.BooleanField(required = False, default = False)
+    completed = db.StringField()
     added_by = db.ReferenceField('User')
     #completed = db.BooleanField()
 
@@ -82,7 +82,7 @@ class Admin(db.Document):
     id_number = db.StringField(required = False, min_length=13, unique=True)
     address = db.EmbeddedDocumentField(Address)
     phone = PhoneField()
-    primary = db.BooleanField(required = False)
+    #primary = db.BooleanField(required = False)
     added_by = db.ReferenceField('AdminSignUp')
 
 class AdminSignUp(db.Document):
