@@ -51,21 +51,19 @@ def contact():
     mail.send(msg)
     return 'Form posted.'
 
-bot = ChatBot("Candice")
 
-trainer =  ChatterBotCorpusTrainer(bot)
-# trainer.train({'What is your name?':'My name is Candice'})
-#trainer.train("chatterbot.corpus.english")
-trainer.train("data/greetings.yml")
-trainer.train("data/data.yml")
+english_bot = ChatBot("Chatterbot", storage_adapter="chatterbot.storage.SQLStorageAdapter")
+trainer = ChatterBotCorpusTrainer(english_bot)
+trainer.train("chatterbot.corpus.english")
 
-@app.route("/chatbot")
+@app.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("index.html")
+
 @app.route("/get")
 def get_bot_response():
     userText = request.args.get('msg')
-    return str(bot.get_response(userText))
-
+    return str(english_bot.get_response(userText))
+    
 initialize_db(app)
 initialize_routes(api)
