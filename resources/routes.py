@@ -5,8 +5,8 @@ from .hospital import HospitalsApi, HospitalApi
 from .hospital_information import HospitalsInfoApi
 from .appointment import AppointmentsApi, AppointmentApi
 
-from .auth import SignupApi, LoginApi
-from .admin_auth import SignupAdminApi,LoginAdminApi
+from .auth import SignupApi, LoginApi, Confirm_Email
+from .admin_auth import SignupAdminApi,LoginAdminApi, Confirm_Admin_Email
 
 from .reset_password import ForgotPassword, ResetPassword, ForgotAdminPassword,ResetAdminPassword
 
@@ -15,6 +15,7 @@ from .reset_password import ForgotPassword, ResetPassword, ForgotAdminPassword,R
 def initialize_routes(api):
     """Mobile application endpoints"""
     api.add_resource(SignupApi, '/api/auth/signup')
+    api.add_resource(Confirm_Email, '/api/auth/verify')
     api.add_resource(LoginApi, '/api/auth/login')
 
     api.add_resource(ForgotPassword, '/api/auth/forgot')
@@ -30,6 +31,7 @@ def initialize_routes(api):
 
     """Admin side endpoints"""
     api.add_resource(SignupAdminApi, '/api/auth/admin/signup')
+    api.add_resource(Confirm_Admin_Email, '/api/auth/admin/verify')
     api.add_resource(LoginAdminApi, '/api/auth/admin/login')
 
     api.add_resource(HospitalsApi, '/api/hospitals')

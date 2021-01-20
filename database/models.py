@@ -86,7 +86,7 @@ class Admin(db.Document):
     added_by = db.ReferenceField('AdminSignUp')
 
 class AdminSignUp(db.Document):
-    name = db.StringField(required=True, unique=True)
+    name = db.StringField(required=True)
     email = db.EmailField(required=True, unique=True)
     password = db.StringField(required=True, min_length=6)
     admin = db.ListField(db.ReferenceField('Admin', reverse_delete_rule=db.PULL))

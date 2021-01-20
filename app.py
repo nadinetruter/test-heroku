@@ -7,9 +7,9 @@ from resources.forms import ContactForm
 from database.db import initialize_db
 from flask_restful import Api
 from resources.errors import errors
+from flask_socketio import SocketIO
 
-from chatterbot import ChatBot
-from chatterbot.trainers import ChatterBotCorpusTrainer
+
 
 
 application = app = Flask(__name__)
@@ -32,13 +32,28 @@ from resources.routes import initialize_routes
 api = Api(app, errors=errors)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
+socketio = SocketIO()
 
 
 
 app.config['MONGODB_SETTINGS'] = {
     'host': 'mongodb+srv://byteme:1234@cluster0.mlj40.mongodb.net/test?retryWrites=true&w=majority'
 }
+socketio = SocketIO(app)
 
+@app.route('/')
+def sessions():
+    return render_template('session.html')
+
+def messageReceived(methods=['GET', 'POST']):
+    print('message was received!!!')
+
+@socketio.on('my event')
+def handle_my_custom_event(json, methods=['GET', 'POST']):
+    print('received my event: ' + str(json))
+    socketio.emit('my response', json, callback=messageReceived)
+
+    
 @app.route('/contact', methods=['POST'])
 def contact():
     form = ContactForm()
@@ -51,19 +66,5 @@ def contact():
     mail.send(msg)
     return 'Form posted.'
 
-
-english_bot = ChatBot("Chatterbot", storage_adapter="chatterbot.storage.SQLStorageAdapter")
-trainer = ChatterBotCorpusTrainer(english_bot)
-trainer.train("chatterbot.corpus.english")
-
-@app.route("/")
-def home():
-    return render_template("index.html")
-
-@app.route("/get")
-def get_bot_response():
-    userText = request.args.get('msg')
-    return str(english_bot.get_response(userText))
-    
 initialize_db(app)
 initialize_routes(api)
