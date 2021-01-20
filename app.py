@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
 from flask_mail import Mail, Message
@@ -41,7 +41,7 @@ app.config['MONGODB_SETTINGS'] = {
 }
 socketio = SocketIO(app)
 
-@app.route('/')
+@app.route('/chatbot')
 def sessions():
     return render_template('session.html')
 
@@ -53,7 +53,7 @@ def handle_my_custom_event(json, methods=['GET', 'POST']):
     print('received my event: ' + str(json))
     socketio.emit('my response', json, callback=messageReceived)
 
-    
+
 @app.route('/contact', methods=['POST'])
 def contact():
     form = ContactForm()
