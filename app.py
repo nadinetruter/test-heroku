@@ -41,7 +41,7 @@ app.config['MONGODB_SETTINGS'] = {
 }
 socketio = SocketIO(app)
 
-@app.route('/chatbot')
+@app.route('/')
 def sessions():
     return render_template('session.html')
 
