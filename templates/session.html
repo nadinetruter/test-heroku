@@ -18,11 +18,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
     <script type="text/javascript">
-    var express = require('express'),
-    app = express(),
-    server = require('http').createServer(app),
-    io = require('socket.io').listen(server),
-    server.listen(process.env.PORT || 3000);
+    var socket = io.connect('https://test-nad.herokuapp.com/', {
+      'path': '/path/to/socket.io';
+      });
 
       socket.on( 'connect', function() {
         socket.emit( 'my event', {
