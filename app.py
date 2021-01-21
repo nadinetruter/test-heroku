@@ -7,8 +7,8 @@ from resources.forms import ContactForm
 from database.db import initialize_db
 from flask_restful import Api
 from resources.errors import errors
-from flask_socketio import SocketIO
 
+from flask_socketio import SocketIO
 
 
 
@@ -32,27 +32,13 @@ from resources.routes import initialize_routes
 api = Api(app, errors=errors)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
-socketio = SocketIO()
+socketio = SocketIO(app)
 
 
 
 app.config['MONGODB_SETTINGS'] = {
     'host': 'mongodb+srv://byteme:1234@cluster0.mlj40.mongodb.net/test?retryWrites=true&w=majority'
 }
-socketio = SocketIO(app)
-
-@app.route('/chatbot',methods=['POST'])
-def sessions():
-    return render_template('session.html')
-
-@app.route('/chatbot')
-def messageReceived(methods=['GET','POST']):
-    print('message was received!!!')
-
-@socketio.on('my event')
-def handle_my_custom_event(json, methods=['GET', 'POST']):
-    print('received my event: ' + str(json))
-    socketio.emit('my response', json, callback=messageReceived)
 
 
 @app.route('/contact', methods=['POST'])
@@ -66,6 +52,20 @@ def contact():
     """ % (form.name.data, form.email.data, form.message.data)
     mail.send(msg)
     return 'Form posted.'
+
+@app.route('/chatbot', methods=['GET','POST'])
+def sessions():
+    return render_template('session.html')
+
+def messageReceived(methods=['GET', 'POST']):
+    print('message was received!!!')
+
+@socketio.on('my event')
+def handle_my_custom_event(json, methods=['GET', 'POST']):
+    print('received my event: ' + str(json))
+    socketio.emit('my response', json, callback=messageReceived)
+
+
 
 initialize_db(app)
 initialize_routes(api)
