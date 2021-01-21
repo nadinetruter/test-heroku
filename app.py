@@ -45,7 +45,7 @@ socketio = SocketIO(app)
 def sessions():
     return render_template('session.html')
 
-def messageReceived(methods=['GET', 'POST']):
+def messageReceived(methods=['GET']):
     print('message was received!!!')
 
 @socketio.on('my event')
