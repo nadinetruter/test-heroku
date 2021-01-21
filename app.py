@@ -46,7 +46,7 @@ def sessions():
     return render_template('session.html')
 
 @app.route('/chatbot')
-def messageReceived(methods=['GET']):
+def messageReceived(methods=['GET','POST']):
     print('message was received!!!')
 
 @socketio.on('my event')
