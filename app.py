@@ -41,12 +41,12 @@ app.config['MONGODB_SETTINGS'] = {
 }
 socketio = SocketIO(app)
 
-@app.route('/chatbot',methods=['GET','POST'])
+@app.route('/chatbot',methods=['POST'])
 def sessions():
     return render_template('session.html')
 
-@app.route('/chatbot',methods=['GET','POST'])
-def messageReceived(methods=['GET','POST']):
+@app.route('/chatbot')
+def messageReceived(methods=['GET']):
     print('message was received!!!')
 
 @socketio.on('my event')
